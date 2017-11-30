@@ -17,6 +17,9 @@ suites:
       - recipe[cas_haproxy::default]
     attributes:
       cas_haproxy:
+        stats:
+          enabled: true
+          auth: 'username:password'
         sites:
           one.example.com:
           two.example.com:
