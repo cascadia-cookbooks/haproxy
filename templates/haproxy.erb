@@ -1,0 +1,7 @@
+# Managed by Chef, changes will be overwritten
+
+# Defaults file for HAProxy
+
+<% node['cas_haproxy']['sites'].each do |site, data| %>
+EXTRAOPTS="$EXTRAOPTS -f /etc/haproxy/sites/<%= site %>.cfg"
+<% end %>
