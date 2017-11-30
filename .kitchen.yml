@@ -3,8 +3,8 @@
 driver:
   name: vagrant
 
-  provisioner:
-    name: chef_zero
+provisioner:
+  name: chef_zero
 
 platforms:
   - name: ubuntu/xenial64
@@ -15,4 +15,8 @@ suites:
   - name: default
     run_list:
       - recipe[cas_haproxy::default]
-    attributes: 
+    attributes:
+      cas_haproxy:
+        sites:
+          one.example.com:
+          two.example.com:
