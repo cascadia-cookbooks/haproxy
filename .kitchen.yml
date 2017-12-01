@@ -21,5 +21,24 @@ suites:
           enabled: true
           auth: 'username:password'
         sites:
-          blog:
-          wiki:
+          - id: blog
+            frontend:
+              bind_port: 6061
+              target_urls:
+                - example.com
+                - blog.example.com
+            backend:
+              balance_strategy: leastconn
+              servers:
+                - id: web1
+                  address: web1.local
+                - id: web2
+                  address: web2.local
+          - id: wiki
+            frontend:
+              target_urls:
+                - wiki.example.com
+            backend:
+              servers:
+                - id: web3
+                  address: web3.local
