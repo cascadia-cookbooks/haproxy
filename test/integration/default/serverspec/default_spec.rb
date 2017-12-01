@@ -29,7 +29,7 @@ describe 'cas_haproxy::default' do
         its(:content) { should include '' }
     end
 
-    describe file('/etc/haproxy/sites/one.example.com.cfg') do
+    describe file('/etc/haproxy/sites/blog.cfg') do
         it { should exist }
         it { should be_owned_by 'root' }
         it { should be_grouped_into 'root' }
@@ -37,7 +37,7 @@ describe 'cas_haproxy::default' do
         its(:content) { should include '' }
     end
 
-    describe file('/etc/haproxy/sites/two.example.com.cfg') do
+    describe file('/etc/haproxy/sites/wiki.cfg') do
         it { should exist }
         it { should be_owned_by 'root' }
         it { should be_grouped_into 'root' }
