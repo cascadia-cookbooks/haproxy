@@ -18,7 +18,8 @@ describe 'cas_haproxy::default' do
         it { should be_owned_by 'root' }
         it { should be_grouped_into 'root' }
         it { should be_mode 644 }
-        its(:content) { should include '' }
+        its(:content) { should include 'EXTRAOPTS="$EXTRAOPTS -f /etc/haproxy/sites/blog.cfg"' }
+        its(:content) { should include 'EXTRAOPTS="$EXTRAOPTS -f /etc/haproxy/sites/wiki.cfg"' }
     end
 
     describe file('/lib/systemd/system/haproxy.service') do
