@@ -54,3 +54,12 @@ node['cas_haproxy']['sites'].each do |site|
         variables(site)
     end
 end
+
+# Notified handlers
+
+service 'haproxy'
+
+execute 'sys_reload' do
+    command 'systemctl daemon-reload'
+    action :nothing
+end
