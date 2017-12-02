@@ -7,3 +7,10 @@ frontend <%= @id %>
 
     acl host_<%= @id %> hdr(host) -i<% @frontend[:target_urls].each do |url| %> <%= url %><% end %>
     use_backend <%= @id %>_cluster if host_<%= @id %>
+
+backend <%= @id %>_cluster
+    balance <%= @backend[:balance_strategy] || 'roundrobin' %>
+    mode tcp
+<% @backend[:servers].each do |server| %>
+    server <%= server[:id] %> <%= server[:address] %>:<%= server[:port] || 80 %> check
+<% end %>
