@@ -12,6 +12,8 @@ template "HAProxy defaults file" do
     mode     0644
     backup   false
     action   :create
+    notifies :run,     'execute[sys_reload]', :delayed
+    notifies :restart, 'service[haproxy]',    :delayed
 end
 
 template "HAProxy service configuration" do
@@ -22,6 +24,8 @@ template "HAProxy service configuration" do
     mode     0644
     backup   false
     action   :create
+    notifies :run,     'execute[sys_reload]', :delayed
+    notifies :restart, 'service[haproxy]',    :delayed
 end
 
 template "Default HAProxy configuration file" do
@@ -32,6 +36,7 @@ template "Default HAProxy configuration file" do
     mode     0644
     backup   false
     action   :create
+    notifies :restart, 'service[haproxy]', :delayed
 end
 
 directory '/etc/haproxy/sites' do
@@ -50,6 +55,7 @@ node['cas_haproxy']['sites'].each do |site|
         mode     0644
         backup   false
         action   :create
+        notifies :restart, 'service[haproxy]', :delayed
 
         variables(site)
     end
