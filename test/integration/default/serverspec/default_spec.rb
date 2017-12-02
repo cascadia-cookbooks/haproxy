@@ -41,6 +41,11 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'bind *:6061' }
         its(:content) { should include 'acl host_blog hdr(host) -i example.com blog.example.com' }
         its(:content) { should include 'use_backend blog_cluster if host_blog' }
+        its(:content) { should include 'backend blog_cluster' }
+        its(:content) { should include 'balance leastconn' }
+        its(:content) { should include 'mode tcp' }
+        its(:content) { should include 'server web1 web1.local:80 check' }
+        its(:content) { should include 'server web2 web2.local:80 check' }
     end
 
     describe file('/etc/haproxy/sites/wiki.cfg') do
@@ -52,5 +57,9 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'bind *:80' }
         its(:content) { should include 'acl host_wiki hdr(host) -i wiki.example.com' }
         its(:content) { should include 'use_backend wiki_cluster if host_wiki' }
+        its(:content) { should include 'backend wiki_cluster' }
+        its(:content) { should include 'balance roundrobin' }
+        its(:content) { should include 'mode tcp' }
+        its(:content) { should include 'server web3 web3.local:80 check' }
     end
 end
