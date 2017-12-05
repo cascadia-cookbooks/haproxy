@@ -24,7 +24,7 @@ template "HAProxy service configuration" do
     mode     0644
     backup   false
     action   :create
-    notifies :run,     'execute[sys_reload]', :delayed
+    notifies :run,     'execute[sys_reload]', :immediately
     notifies :restart, 'service[haproxy]',    :delayed
 end
 
