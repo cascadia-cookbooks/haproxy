@@ -13,7 +13,7 @@ backend <%= @id %>_cluster
     mode tcp
 <% @backend[:servers].each do |server| %>
     <% if server.is_a?(String) %>
-    server <%= server %> <%= server %> check
+    server <%= server.partition(":").first %> <%= server %> check
     <% else %>
     server <%= server[:id] || server[:address] %> <%= server[:address] %>:<%= server[:port] || 80 %> check
     <% end %>
