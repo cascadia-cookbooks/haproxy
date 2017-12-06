@@ -34,6 +34,7 @@ suites:
                   address: web1.local
                 - id: web2
                   address: web2.local
+                - address: snowflake.local
           - id: wiki
             frontend:
               target_urls:

@@ -46,6 +46,7 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'mode tcp' }
         its(:content) { should include 'server web1 web1.local:80 check' }
         its(:content) { should include 'server web2 web2.local:80 check' }
+        its(:content) { should include 'server snowflake.local snowflake.local:80 check' }
     end
 
     describe file('/etc/haproxy/sites/wiki.cfg') do
