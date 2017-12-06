@@ -12,5 +12,5 @@ backend <%= @id %>_cluster
     balance <%= @backend[:balance_strategy] || 'roundrobin' %>
     mode tcp
 <% @backend[:servers].each do |server| %>
-    server <%= server[:id] %> <%= server[:address] %>:<%= server[:port] || 80 %> check
+    server <%= server[:id] || server[:address] %> <%= server[:address] %>:<%= server[:port] || 80 %> check
 <% end %>
