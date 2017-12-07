@@ -1,4 +1,4 @@
-default['cas_haproxy']['stats'] = {
+default['cas_haproxy']['stats_http'] = {
     enabled: false,
     mode: 'http',
     port: '9001',
@@ -6,4 +6,15 @@ default['cas_haproxy']['stats'] = {
     realm: 'HAProxy-Stats',
     uri: '/haproxy_stats',
     auth: 'admin:admin'
+}
+
+default['cas_haproxy']['stats_socket'] = {
+    enabled: false,
+    path: '/var/run/haproxy.sock',
+    user: 'root',
+    group: 'root',
+    mode: 0600,
+    level: 'operator',
+    timeout: '10s',
+    maxconn: 10
 }
