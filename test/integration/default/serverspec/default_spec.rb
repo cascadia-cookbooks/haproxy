@@ -46,7 +46,7 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'mode tcp' }
         its(:content) { should include 'server web1 web1.local:80 check' }
         its(:content) { should include 'server web2 web2.local:80 check' }
-        its(:content) { should include 'server snowflake.local snowflake.local:80 check' }
+        its(:content) { should include 'server web3.local web3.local:80 check' }
     end
 
     describe file('/etc/haproxy/sites/wiki.cfg') do
@@ -61,6 +61,8 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'backend wiki_cluster' }
         its(:content) { should include 'balance roundrobin' }
         its(:content) { should include 'mode tcp' }
-        its(:content) { should include 'server web3 web3.local:80 check' }
+        its(:content) { should include 'server web4.local web4.local:80 check' }
+        its(:content) { should include 'server web5.local web5.local:80 check' }
+        its(:content) { should include 'server web6.local web6.local:5000 check' }
     end
 end
