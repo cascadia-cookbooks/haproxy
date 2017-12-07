@@ -38,3 +38,16 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
+
+<% if @stats_http[:enabled] %>
+listen stats
+        stats enable
+        mode <%= @stats_http[:mode] %>
+        bind :<%= @stats_http[:port] %>
+        stats realm <%= @stats_http[:realm] %>
+        stats uri <%= @stats_http[:uri] %>       
+        stats auth <%= @stats_http[:auth] %>
+        <% if @stats_http[:hide_version] %>
+        stats hide-version
+        <% end %>
+<% end %>
