@@ -10,7 +10,9 @@ describe 'cas_haproxy::default' do
         it { should be_owned_by 'root' }
         it { should be_grouped_into 'root' }
         it { should be_mode 644 }
-        its(:content) { should include '' }
+        its(:content) { should include 'stats socket /var/run/haproxy.sock user root group root mode 600 level operator' }
+        its(:content) { should include 'stats timeout 10s' }
+        its(:content) { should include 'stats maxconn 10' }
     end
 
     describe file('/etc/default/haproxy') do
