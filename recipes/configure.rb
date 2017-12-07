@@ -37,6 +37,11 @@ template "Default HAProxy configuration file" do
     backup   false
     action   :create
     notifies :restart, 'service[haproxy]', :delayed
+
+    variables({
+        stats_http: node['cas_haproxy']['stats_http'],
+        stats_socket: node['cas_haproxy']['stats_socket']
+    })
 end
 
 directory '/etc/haproxy/sites' do
