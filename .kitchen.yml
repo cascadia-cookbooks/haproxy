@@ -20,6 +20,8 @@ suites:
         stats:
           enabled: true
           auth: 'username:password'
+        stats_socket:
+          enabled: true
         sites:
           - id: blog
             frontend:
