@@ -17,7 +17,7 @@ suites:
       - recipe[cas_haproxy::default]
     attributes:
       cas_haproxy:
-        stats:
+        stats_http:
           enabled: true
           auth: 'username:password'
         stats_socket:
