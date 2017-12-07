@@ -34,12 +34,13 @@ suites:
                   address: web1.local
                 - id: web2
                   address: web2.local
-                - address: snowflake.local
+                - address: web3.local
           - id: wiki
             frontend:
               target_urls:
                 - wiki.example.com
             backend:
               servers:
-                - id: web3
-                  address: web3.local
+                - web4.local
+                - web5.local
+                - web6.local:5000
