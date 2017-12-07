@@ -2,6 +2,8 @@
 
 # Defaults file for HAProxy
 
+EXTRAOPTS="\
 <% node['cas_haproxy']['sites'].each do |site| %>
-EXTRAOPTS="$EXTRAOPTS -f /etc/haproxy/sites/<%= site[:id] %>.cfg"
+-f /etc/haproxy/sites/<%= site[:id] %>.cfg \
 <% end %>
+"
