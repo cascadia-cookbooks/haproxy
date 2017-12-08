@@ -17,11 +17,12 @@ suites:
       - recipe[cas_haproxy::default]
     attributes:
       cas_haproxy:
-        stats_http:
-          enabled: true
-          auth: 'username:password'
-        stats_socket:
-          enabled: true
+        stats:
+          http:
+            enabled: true
+            auth: 'username:password'
+          socket:
+            enabled: true
         sites:
           - id: blog
             frontend:

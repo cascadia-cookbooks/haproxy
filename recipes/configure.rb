@@ -39,8 +39,8 @@ template "Default HAProxy configuration file" do
     notifies :restart, 'service[haproxy]', :delayed
 
     variables({
-        stats_http: node['cas_haproxy']['stats_http'],
-        stats_socket: node['cas_haproxy']['stats_socket']
+        stats_http: node['cas_haproxy']['stats']['http'],
+        stats_socket: node['cas_haproxy']['stats']['socket']
     })
 end
 

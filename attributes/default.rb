@@ -1,4 +1,4 @@
-default['cas_haproxy']['stats_http'] = {
+default['cas_haproxy']['stats']['http'] = {
     enabled: false,
     mode: 'http',
     port: '9001',
@@ -8,7 +8,7 @@ default['cas_haproxy']['stats_http'] = {
     auth: 'admin:admin'
 }
 
-default['cas_haproxy']['stats_socket'] = {
+default['cas_haproxy']['stats']['socket'] = {
     enabled: false,
     path: '/var/run/haproxy.sock',
     user: 'root',
