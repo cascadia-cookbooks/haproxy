@@ -2,12 +2,6 @@ global
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
-        <% if @stats_socket[:enabled] %>
-        # Stats socket configuration
-        stats socket <%= @stats_socket[:path] %> user <%= @stats_socket[:user] %> group <%= @stats_socket[:group] %> mode <%= @stats_socket[:mode] %> level <%= @stats_socket[:level] %>
-        stats timeout <%= @stats_socket[:timeout] %>
-        stats maxconn <%= @stats_socket[:maxconn] %>
-        <% end %>
         user haproxy
         group haproxy
         daemon
@@ -21,6 +15,14 @@ global
         #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
         ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
         ssl-default-bind-options no-sslv3
+
+        <%# Stats socket configuration if enabled %>
+        <% if @stats_socket[:enabled] %>
+        # Stats socket configuration
+        stats socket <%= @stats_socket[:path] %> user <%= @stats_socket[:user] %> group <%= @stats_socket[:group] %> mode <%= @stats_socket[:mode] %> level <%= @stats_socket[:level] %>
+        stats timeout <%= @stats_socket[:timeout] %>
+        stats maxconn <%= @stats_socket[:maxconn] %>
+        <% end %>
 
 defaults
         log     global
