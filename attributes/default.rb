@@ -1,3 +1,5 @@
+default['cas_haproxy']['version'] = 'pkg'
+
 default['cas_haproxy']['stats']['http'] = {
     enabled: false,
     mode: 'http',

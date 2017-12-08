@@ -4,4 +4,9 @@
 # Description:: Install HAProxy from OS repository
 #
 
-package 'haproxy'
+if node['cas_haproxy']['version'] == 'pkg'
+    # Installation default OS package manager version
+    package 'haproxy'
+else
+    # pass
+end
