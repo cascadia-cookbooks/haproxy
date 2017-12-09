@@ -4,6 +4,10 @@ describe 'cas_haproxy::install' do
     describe package('haproxy') do
         it { should be_installed }
     end
+
+    describe command('haproxy -v') do
+        its(:stdout) { should contain '1.8.1' }
+    end
 end
 
 describe 'cas_haproxy::config' do
