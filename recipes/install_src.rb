@@ -5,4 +5,5 @@
 #
 
 # Break up HAProxy version
-version_major, version_minor, version_patch = node['cas_haproxy']['version'].split('.')
+version = node['cas_haproxy']['version']
+version_major, version_minor, version_patch = version.split('.')
