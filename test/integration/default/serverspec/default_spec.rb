@@ -6,7 +6,7 @@ describe 'cas_haproxy::install' do
     end
 
     describe command('haproxy -v') do
-        its(:stdout) { should contain '1.8.1' }
+        its(:stdout) { should contain('1.8.1').after('HA-Proxy version') }
     end
 end
 
