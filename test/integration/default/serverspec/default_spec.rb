@@ -1,10 +1,12 @@
 require 'spec_helper'
 
-describe 'cas_haproxy::default' do
+describe 'cas_haproxy::install' do
     describe package('haproxy') do
         it { should be_installed }
     end
+end
 
+describe 'cas_haproxy::config' do
     describe file('/etc/haproxy/haproxy.cfg') do
         it { should exist }
         it { should be_owned_by 'root' }
