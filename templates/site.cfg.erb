@@ -10,7 +10,7 @@ frontend <%= @id %>
 
 backend <%= @id %>_cluster
     balance <%= @backend[:balance_strategy] || 'roundrobin' %>
-    mode http
+    mode <%= @backend[:mode] || 'http' %>
 <% @backend[:servers].each do |server| %>
     <% if server.is_a?(String) %>
     server <%= server.partition(":").first %> <%= server %> check
