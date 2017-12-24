@@ -44,6 +44,7 @@ suites:
               target_urls:
                 - wiki.example.com
             backend:
+              mode: tcp
               servers:
                 - web4.local
                 - web5.local
