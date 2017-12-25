@@ -66,6 +66,8 @@ describe 'cas_haproxy::sites' do
         its(:content) { should include 'backend wiki_cluster' }
         its(:content) { should include 'balance roundrobin' }
         its(:content) { should include 'mode tcp' }
+        its(:content) { should include 'stick-table type ip size 20k expire 1h' }
+        its(:content) { should include 'stick on src' }
         its(:content) { should include 'server web4.local web4.local check' }
         its(:content) { should include 'server web5.local web5.local check' }
         its(:content) { should include 'server web6.local web6.local:5000 check' }
