@@ -45,6 +45,11 @@ suites:
                 - wiki.example.com
             backend:
               mode: tcp
+              stick_table:
+                type: ip
+                size: 20k
+                expire: 1h
+                stick_on: src
               servers:
                 - web4.local
                 - web5.local
