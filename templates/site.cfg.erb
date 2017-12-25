@@ -11,6 +11,10 @@ frontend <%= @id %>
 backend <%= @id %>_cluster
     balance <%= @backend[:balance_strategy] || 'roundrobin' %>
     mode <%= @backend[:mode] || 'http' %>
+<% if @backend[:stick_table] %>
+    stick-table type <%= @backend[:stick_table][:type] %> size <%= @backend[:stick_table][:size] %> expire <%= @backend[:stick_table][:expire] %>
+    stick on <%= @backend[:stick_table][:stick_on] %>
+<% end %>
 <% @backend[:servers].each do |server| %>
     <% if server.is_a?(String) %>
     server <%= server.partition(":").first %> <%= server %> check
