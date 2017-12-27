@@ -4,6 +4,10 @@
 
 frontend <%= @id %>
     bind *:<%= @frontend[:bind_port] || 80 %>
+<% if @frontend[:arbitrary] %>
+<% @frontend[:arbitrary].each do |fa| %>
+    <%= fa %>
+<% end %>
 
     acl host_<%= @id %> hdr(host) -i<% @frontend[:target_urls].each do |url| %> <%= url %><% end %>
     use_backend <%= @id %>_cluster if host_<%= @id %>
@@ -14,6 +18,10 @@ backend <%= @id %>_cluster
 <% if @backend[:stick_table] %>
     stick-table type <%= @backend[:stick_table][:type] %> size <%= @backend[:stick_table][:size] %> expire <%= @backend[:stick_table][:expire] %>
     stick on <%= @backend[:stick_table][:stick_on] %>
+<% end %>
+<% if @backend[:arbitrary] %>
+<% @backend[:arbitrary].each do |ba| %>
+    <%= ba %>
 <% end %>
 <% @backend[:servers].each do |server| %>
     <% if server.is_a?(String) %>
