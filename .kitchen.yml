@@ -28,11 +28,15 @@ suites:
           - id: blog
             frontend:
               bind_port: 6061
+              arbitrary:
+                - '# arbitrary frontend config item'
               target_urls:
                 - example.com
                 - blog.example.com
             backend:
               balance_strategy: leastconn
+              arbitrary:
+                - '# arbitrary backend config item'
               servers:
                 - id: web1
                   address: web1.local
